@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div, .calculator {
+    border: 2px solid black
+}
+
+.calculator {
+    display: flex;
+    height: 500px;
+    width: 400px;
+    flex-flow: row wrap;
+}
+
+.display, .numbers, .operators {
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+/* .display {
+    height: 100px;
+    width: 400px;
+}
+
+.numbers {
+    height: 300px;
+    width: 300px;
+}
+
+.operators {
+    height: 300px;
+    width: 100px;
+} */
