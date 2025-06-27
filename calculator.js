@@ -76,8 +76,6 @@ let divide = (x, y) => {
 //     })
 // }
 
-// let inputArr = []
-
 let setDisplay = () => {
     const buttons = document.querySelectorAll("button");
     for (let button of buttons) {
@@ -85,29 +83,54 @@ let setDisplay = () => {
             document.querySelector(".display").textContent += button.textContent
         })
     }
-    // console.log(inputArr)
 }
-
-// inputArr.push(setDisplay())
-// console.log(inputArr)
-setDisplay()
-
 
 // setDisplay() already has text in display so get that to use in operate function
 // get your first number and operator and second number
-let operate = (first, operator, second) => {
-    let result;
-    if (operator === '+') {
-        result = add(first, second)
-    }
-    if (operator === ('-')) {
-        result = subtract(first, second)
-    }
-    if (operator === ('*')) {
-        result = multiply(first, second)
-    }
-    if (operator === ('/')) {
-        result = divide(first, second)
-    }
-    if (first === ('=')) { return result }
+let operate = () => {
+    setDisplay()
+
+    const display = document.querySelector(".display")
+    // console.log(display.textContent)
+    const equalBtn = document.querySelector("#buttonEql")
+    // console.log(displayStr)
+
+    equalBtn.addEventListener('click', (event) => {
+        let firstNum;
+        let secondNum;
+        let result;
+        // console.log(display.textContent)
+        if (display.textContent.includes('+')) {
+            firstNum = display.textContent.substring(0, display.textContent.indexOf('+'))
+            firstNum = parseInt(firstNum)
+            secondNum = display.textContent.substring(display.textContent.indexOf('+') + 1, display.textContent.length - 1)
+            secondNum = parseInt(secondNum)
+            result = (add(firstNum, secondNum)).toString()
+        }
+        if (display.textContent.includes('-')) {
+            firstNum = display.textContent.substring(0, display.textContent.indexOf('-'))
+            firstNum = parseInt(firstNum)
+            secondNum = display.textContent.substring(display.textContent.indexOf('-') + 1, display.textContent.length - 1)
+            secondNum = parseInt(secondNum)
+            result = (subtract(firstNum, secondNum)).toString()
+        }
+        if (display.textContent.includes('*')) {
+            firstNum = display.textContent.substring(0, display.textContent.indexOf('*'))
+            firstNum = parseInt(firstNum)
+            secondNum = display.textContent.substring(display.textContent.indexOf('*') + 1, display.textContent.length - 1)
+            secondNum = parseInt(secondNum)
+            result = (multiply(firstNum, secondNum)).toString()
+        }
+        if (display.textContent.includes('/')) {
+            firstNum = display.textContent.substring(0, display.textContent.indexOf('/'))
+            firstNum = parseInt(firstNum)
+            secondNum = display.textContent.substring(display.textContent.indexOf('/') + 1, display.textContent.length - 1)
+            secondNum = parseInt(secondNum)
+            result = (divide(firstNum, secondNum)).toString()
+        }
+        firstNum = result;
+        document.querySelector(".display").textContent = result
+    })
 }
+
+operate()
