@@ -78,22 +78,23 @@ let divide = (x, y) => {
 
 // let inputArr = []
 
-let setButtons = () => {
-    let inputArr = []
+let setDisplay = () => {
     const buttons = document.querySelectorAll("button");
     for (let button of buttons) {
         button.addEventListener('click', (event) => {
-            inputArr.push(button.textContent)
-            document.querySelector(".display").textContent = inputArr
-            return inputArr
+            document.querySelector(".display").textContent += button.textContent
         })
     }
+    // console.log(inputArr)
 }
 
-// inputArr.push(setButtons())
+// inputArr.push(setDisplay())
 // console.log(inputArr)
-// setButtons()
+setDisplay()
 
+
+// setDisplay() already has text in display so get that to use in operate function
+// get your first number and operator and second number
 let operate = (first, operator, second) => {
     let result;
     if (operator === '+') {
@@ -110,11 +111,3 @@ let operate = (first, operator, second) => {
     }
     if (first === ('=')) { return result }
 }
-
-//tests
-console.log(operate(7,'+',3))
-console.log(operate(7,'-',3))
-console.log(operate(7,'*',3))
-console.log(operate(21,'/',3))
-console.log(operate(21,'+',3,'/'))
-// console.log('=')
